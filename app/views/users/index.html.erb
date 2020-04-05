@@ -1,23 +1,5 @@
-<div class="container">
 <div class="row">
-
 <div class="col-xs-3" >
-
-<% if @book.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-  <h2>error</h2>>
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<p id="notice">
- <%=  notice %>
-</p>
-
 
 	<h2>User info</h2>
 	<%= attachment_image_tag @user, :profile_image,:fill, 100, 100, fallback: "no_image.jpg"%>
@@ -43,15 +25,19 @@
 
 <h2>New book</h2>
 <%= form_for(@book) do |f| %>
-<div class="row-field">
+<div class="field row">
 <p>Title</p>
-<%= f.text_field :title %>
+<%= f.text_field :title, class: "col-xs-12 book_title"  %>
 </div>
-<div class="row-field">
+
+<div class="field row">
 <p>Opinion</p>
-<%= f.text_area :body %>
+<%= f.text_area :body, class: "col-xs-12 book_body"  %>
 </div>
-<%= f.submit 'Create Book' %>
+
+<div class="actions row">
+<%= f.submit class: "btn btn-primary col-xs-12" %>
+</div>
 <% end %>
 </div>
 
@@ -82,6 +68,5 @@
 		<% end %>
 	</tbody>
 </table>
-</div>
 </div>
 </div>

@@ -1,15 +1,13 @@
 
 <% if @user.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <h2>error</h2>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+  <h3><%= @user.errors.count %>error occurrence</h3><!--エラーメッセ-->
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
-
+<!
 
 <h2>User info</h2>
 <%= form_for (@user) do |f| %>

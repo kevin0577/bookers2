@@ -8,13 +8,13 @@ end
 def edit
 	@user = User.find(params[:id])
   if@user.id != current_user.id
-      redirect_to user_path(current_user.id)
-    end
+  redirect_to user_path(current_user.id)
+  end
 end
 def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-    flash[:notice] = "successfully"
+  @user = User.find(params[:id])
+  if @user.update(user_params)
+     flash[:notice] = "successfully updated user!"
     redirect_to user_path
   else
     render :edit

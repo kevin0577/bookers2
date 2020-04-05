@@ -17,53 +17,23 @@
       </div>
           <div class="collapse navbar-collapse" id="navbarEexample1">
             <ul class="nav navbar-nav navbar-right">
-              <% if user_signed_in? %>
-                <li >
-                  <%= link_to  user_path(current_user.id) do %>
-                  <span class="glyphicon glyphicon-home" aria-hidden="true">Home</span>
-                  <% end %>
-                </li>
-                <li >
-                  <%= link_to users_path do%>
-                  <span class="glyphicon glyphicon-user" aria-hidden="true">Users</span>
-                  <% end %>
-                </li>
-                <li >
-                  <%= link_to books_path do %>
-                  <span class="glyphicon glyphicon-book" aria-hidden="true">Books</span>
-                  <% end %>
-                </li>
-                <li >
-                  <%= link_to  destroy_user_session_path, method: :delete do%>
-                  <span class="glyphicon glyphicon-log-out" aria-hidden="true">logout</span>
-                  <% end %>
-                </li>
-
-              <% else %>
-                <li>
-                  <%= link_to root_path do%>
-                  <span class="glyphicon glyphicon-home" aria-hidden="true">Home</span>
-                  <% end %>
-                </li>
-                <li><%= link_to home_about_path do%>
-                  <span class="glyphicon glyphicon-link" aria-hidden="true">about</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to  new_user_registration_path do%>
-                  <span class="glyphicon glyphicon-edit" aria-hidden="true">Sign up</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to  new_user_session_path do%>
-                  <span class="glyphicon glyphicon-log-in" aria-hidden="true">login</span>
-                  <% end %>
-                </li>
-              <% end %>
+            <% if user_signed_in? %>
+            <li><%= link_to ' home', user_path(current_user), class: 'glyphicon glyphicon-home home' %></li>
+            <li><%= link_to ' users', users_path, class: 'glyphicon glyphicon-user users' %></li>
+            <li><%= link_to ' books', books_path, class: 'glyphicon glyphicon-book books' %></li>
+            <li><%= link_to ' logout', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
+            <% else %>
+            <li><%= link_to ' home', root_path, class: 'glyphicon glyphicon-home home' %></li>
+            <li><%= link_to ' about', home_about_path, class: 'glyphicon glyphicon-link about' %></li>
+            <li><%= link_to ' sign up', new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></li>
+            <li><%= link_to ' login', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %></li>
+            <% end %>
             </ul>
        </div>
     </div>
     </nav>
+
+    <div class="container">
     <p id="notice"><%=  notice %></p>
     <%= yield %>
   </body>
