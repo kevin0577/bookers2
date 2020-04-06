@@ -28,12 +28,10 @@
 <p>Title</p>
 <%= f.text_field :title, class: "col-xs-12 book_title"  %>
 </div>
-
 <div class="field row">
 <p>Opinion</p>
 <%= f.text_area :body, class: "col-xs-12 book_body"  %>
 </div>
-
 <div class="actions row">
 <%= f.submit class: "btn btn-primary col-xs-12" %>
 </div>
@@ -41,9 +39,7 @@
 </div>
 
 <div class="col-xs-9">
-
 <h3>Books</h3>
-
 <table class="table table-hove">
 <thead>
 <tr>
@@ -52,7 +48,6 @@
 <th>Opinion</th>
 </tr>
 </thead>
-
 <tbody>
 <% @books.each do |book| %>
 <tr>
@@ -66,6 +61,10 @@
 </td>
 <td>
 <%= book.body %>
+</td>
+<!-- コメント件数 -->
+<td>
+<%= book.book_comments.count %>件コメント</h2>
 </td>
 </tr>
 <% end %>

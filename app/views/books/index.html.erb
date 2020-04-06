@@ -50,9 +50,7 @@
 </div>
 
 <div class="col-xs-9">
-
 <h3>Books</h3>
-
 <table class="table table-hove">
 <thead>
 <tr>
@@ -75,18 +73,25 @@
 <td>
 <%= book.body %>
 </td>
+
+<!-- いいね機能 -->
 <td>
-<% if Favorite.find_by(user_id: @current_user.id, book_id: @book.id) %>
-    <%= link_to("/favorites/#{@book.id}/destroy", {method: "post"}) do %>
-    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: red;"></span>
-    <%= @book.favorites.count %>
-    <% end %>
-    <% else %>
-    <%= link_to("/favorites/#{@book.id}/create", {method: "post"}) do %>
-    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-    <%= @book.favorites.count %>
-    <% end %>
+<% if current_user.already_liked?(book) %>
+  <%= link_to book_favorites_path(book), method: :delete do %>
+  <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+  <%= book.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to book_favorites_path(book), method: :post do %>
+  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+  <%= book.favorites.count %>
+  <% end %>
 <% end %>
+</td>
+
+<!-- コメント件数 -->
+<td>
+<%= book.book_comments.count %>件コメント
 </td>
 </tr>
 <% end %>

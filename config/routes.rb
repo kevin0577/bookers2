@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'homes#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :update, :index]
-  resources :books
-  resource :favorite, only: [:create, :destroy]
+  resources :books do
+  resource :favorites, only: [:create, :destroy]
+  resource :book_comments, only: [:create, :destroy]
+end
 end
