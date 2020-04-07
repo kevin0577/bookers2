@@ -22,9 +22,10 @@
   </div>
   <% end %>
 </div>
+
 <!-- 投稿 -->
 <h2>New book</h2>
-<%= form_for(@book) do |f| %>
+<%= form_for(@newbook) do |f| %>
 <div class="field row">
 <p>Title</p>
 <%= f.text_field :title, class: "col-xs-12 book_title"  %>
@@ -40,6 +41,7 @@
 </div>
 <% end %>
 </div>
+
 <!-- ユーザー一覧 -->
 <div class="col-xs-9">
 <h3>Users</h3>

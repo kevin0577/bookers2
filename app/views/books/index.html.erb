@@ -1,8 +1,8 @@
 <div class="row">
-<% if @book.errors.any? %>
-  <h3><%= @book.errors.count %>error occurrence</h3><!--エラーメッセ-->
+<% if @newbook.errors.any? %>
+  <h3><%= @newbook.errors.count %>error occurrence</h3><!--エラーメッセ-->
   <ul>
-    <% @book.errors.full_messages.each do |message| %>
+    <% @newbook.errors.full_messages.each do |message| %>
     <li><%= message %></li>
     <% end %>
   </ul>
@@ -35,7 +35,7 @@
 
 <!-- 投稿 -->
 <h2>New book</h2>
-<%= form_for(@book) do |f| %>
+<%= form_for(@newbook) do |f| %>
 <div class="field row">
 <p>Title</p>
 <%= f.text_field :title, class: "col-xs-12 book_title"  %>
