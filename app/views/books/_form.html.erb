@@ -1,0 +1,24 @@
+<% if @newbook.errors.any? %>
+  <h3><%= @newbook.errors.count %>error occurrence</h3><!--エラーメッセ-->
+  <ul>
+    <% @newbook.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@newbook) do |f| %>
+<div class="field row">
+<p>Title</p>
+<%= f.text_field :title, class: "col-xs-12 book_title"  %>
+</div>
+
+<div class="field row">
+<p>Opinion</p>
+<%= f.text_area :body, class: "col-xs-12 book_body"  %>
+</div>
+
+<div class="actions row">
+<%= f.submit class: "btn btn-primary col-xs-12" %>
+</div>
+<% end %>

@@ -25,6 +25,9 @@ def index
     @user = current_user
     @newbook = Book.new
 end
+def follows
+    @user = User.find(params[:user_id])
+end
 
 private
 def user_params
