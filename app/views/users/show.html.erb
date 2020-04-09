@@ -3,42 +3,7 @@
 
 <!-- ユーザー -->
 <h2>User info</h2>
-<table class="table">
-<tbody>
-	<tr><%= attachment_image_tag @user, :profile_image,:fill, 100, 100, fallback: "no_image.jpg"%></tr>
-	<tr>
-	<th>name</th>
-	<th><%= @user.name %></th>
-	</tr>
-	<tr>
-	<th>introduction</th>
-	<th><%= @user.introduction %></th>
-	</tr>
-	<tr>
-	<th><%= "フォロー数" %></th>
-	<th><%= link_to user_follows_path(@user.id)do %>
-		<%= @user.follower.count %>
-		<% end %>
-	</th>
-	</tr>
-	<tr>
-	<th><%= "フォロワー数" %></th>
-	<th><%= @user.followed.count %></th>
-	</tr>
-</tbody>
-</table>
-
-<!-- フォロー機能 -->
-<div class="btn-wrapper">
-	<div class="row">
-	<% if current_user.following?(@user) %>
-	<%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info col-xs-10 col-xs-offset-1" %>
-	<% else %>
-	<%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success col-xs-10 col-xs-offset-1" %>
-	<% end %>
-	</div>
-</div>
-
+    <%= render 'info', user: current_user %>
 <!-- 投稿 -->
 <h2>New book</h2>
     <%= render "books/form" %>
